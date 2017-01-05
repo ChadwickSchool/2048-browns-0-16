@@ -3,7 +3,7 @@ var UP_ARROW = '38';
 var DOWN_ARROW = '40';
 var LEFT_ARROW = '37';
 var RIGHT_ARROW = '39';
-
+var R_KEY = '82';
 
 
 //As soon as webpage loads run these two functions
@@ -27,6 +27,22 @@ function setUpBoard(){
 	addTile();
 
 }
+
+function clearBoard(){
+	for(var r=0; r < grid.length; r++)
+	{
+			for(var c=0; c<grid[r].length; c++)
+			{
+							grid[r][c] = "x";
+			}
+	}
+	addTile();
+}
+
+if(e.keyCode == R_BUTTON){
+	clearBoard();
+}
+
 
 function addTile() {
 		var x = Math.round(Math.random()*3);
