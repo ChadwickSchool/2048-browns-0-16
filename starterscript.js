@@ -39,9 +39,7 @@ function clearBoard(){
 	addTile();
 }
 
-if(e.keyCode == R_BUTTON){
-	clearBoard();
-}
+
 
 
 function addTile() {
@@ -92,6 +90,9 @@ document.onkeydown = function(e) {
 
     //keyCode is actually a character value which we convert to a String
     //to use triple equals sign
+		if(e.keyCode == R_KEY){
+			clearBoard();
+		}
     if (e.keyCode == UP_ARROW) {
         // up arrow
 				console.log("Pressed up")
@@ -202,10 +203,21 @@ function moveTilesLeft()
 	}
 }
 
-// function combineTilesUp()
-// {
-//
-// }
+function combineTilesUp()
+{
+	for(var r=0; r < grid.length; r++)
+	{
+			for(var c=0; c<grid[r].length; c++)
+			{
+				if(r !== 0 && grid[r][c] !== "x" && grid [r][c] === grid[r-1][c] )
+				{
+					var tileTotal = parseInt(grid[r-1][c]) + parseInt(grid[r][c]);
+					grid[r-1][c] = tileTotal + "";
+					grid[r][c] = "x";
+			}
+		}
+	}
+}
 //
 // function combineTilesDown()
 // {
